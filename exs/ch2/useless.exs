@@ -12,5 +12,3 @@ defmodule Useless do
     add(x,2)
   end
 end
-
-IO.puts Useless.greet_and_add_two(10)
