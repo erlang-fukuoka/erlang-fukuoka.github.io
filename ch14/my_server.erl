@@ -1,5 +1,5 @@
 -module(my_server).
--compile([start/2, start_link/2, call/2, cast/2, reply/2]).
+-export([start/2, start_link/2, call/2, cast/2, reply/2]).
 
 %% Public API
 start(Module, InitialState) ->
@@ -11,7 +11,7 @@ start_link(Module, InitialState) ->
 
 call(Pid, Msg) ->
     Ref = erlang:monitor(process, Pid),
-    Pid ! {self(), Ref, Msg},
+    Pid ! {sync, Ref, Msg},
     receive
         {Ref, Reply} ->
             erlang:demonitor(Ref, [flush]),
