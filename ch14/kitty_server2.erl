@@ -1,7 +1,6 @@
 -module(kitty_server2).
 -export([start_link/0, order_cat/4, return_cat/2, close_shop/1]).
 -export([init/1, handle_call/3, handle_cast/2]).
-
 -record(cat, {name, color=green, description}).
 
 %% Client API

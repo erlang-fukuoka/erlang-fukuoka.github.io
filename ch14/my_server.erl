@@ -11,7 +11,7 @@ start_link(Module, InitialState) ->
 
 call(Pid, Msg) ->
     Ref = erlang:monitor(process, Pid),
-    Pid ! {sync, Ref, Msg},
+    Pid ! {sync, self(), Ref, Msg},
     receive
         {Ref, Reply} ->
             erlang:demonitor(Ref, [flush]),
